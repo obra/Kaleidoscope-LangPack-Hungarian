@@ -17,6 +17,7 @@
  */
 
 #include <Akela-LangPack-Hungarian.h>
+#include <Akela-OneShot.h>
 
 typedef enum {
   AA,
@@ -41,7 +42,8 @@ namespace Akela {
       if (!key_toggled_on (keyState))
         return Key_NoKey;
 
-      bool needShift = Keyboard.isModifierActive (Key_LShift.keyCode);
+      bool needShift = Keyboard.isModifierActive (Key_LShift.keyCode) ||
+        ::OneShot.isModifierActive (Key_LShift);
 
       Keyboard.press (Key_RAlt.keyCode);
       Keyboard.sendReport ();
