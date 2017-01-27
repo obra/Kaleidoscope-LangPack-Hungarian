@@ -132,7 +132,7 @@ namespace Akela {
 
     void
     Hungarian_::begin (void) {
-      event_handler_hook_add (eventHandlerHook);
+      event_handler_hook_use (eventHandlerHook);
     }
   }
 }
