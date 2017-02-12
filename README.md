@@ -1,4 +1,4 @@
-# Akela-LangPack-Hungarian
+# Kaleidoscope-LangPack-Hungarian
 
 ![status][st:experimental]
 
@@ -6,10 +6,10 @@
  [st:broken]: https://img.shields.io/badge/broken-X-black.png?style=flat&colorA=e05d44&colorB=494e52
  [st:experimental]: https://img.shields.io/badge/experimental----black.png?style=flat&colorA=dfb317&colorB=494e52
 
-Hungarian language pack for the AKELA plugin library. This plugin introduces a
-number of new key codes, which can be used to input Hungarian symbols on any
-operating system that supports a `Compose` key. The package has been tested
-under GNOME and Windows with WinCompose.
+Hungarian language pack for the Kaleidoscope. This plugin introduces a number of
+new key codes, which can be used to input Hungarian symbols on any operating
+system that supports a `Compose` key. The package has been tested under GNOME
+and Windows with WinCompose.
 
 ## Using the plugin
 

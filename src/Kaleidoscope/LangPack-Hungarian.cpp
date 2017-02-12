@@ -1,5 +1,5 @@
 /* -*- mode: c++ -*-
- * Akela -- Animated Keyboardio Extension Library for Anything
+ * Kaleidoscope-LangPack-Hungarian -- Hungarian language support
  * Copyright (C) 2016, 2017  Gergely Nagy
  *
  * This program is free software: you can redistribute it and/or modify
@@ -16,8 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <Akela-LangPack-Hungarian.h>
-#include <Akela-OneShot.h>
+#include <Kaleidoscope-LangPack-Hungarian.h>
+#include <Kaleidoscope-OneShot.h>
 
 typedef enum {
   AA,
@@ -31,7 +31,7 @@ typedef enum {
   IA,
 } HungarianSymbol;
 
-namespace Akela {
+namespace KaleidoscopePlugins {
   namespace LangPack {
 
     Key
@@ -137,4 +137,4 @@ namespace Akela {
   }
 }
 
-Akela::LangPack::Hungarian_ Hungarian;
+KaleidoscopePlugins::LangPack::Hungarian_ Hungarian;
