@@ -34,6 +34,15 @@ typedef enum {
 namespace KaleidoscopePlugins {
   namespace LangPack {
 
+    static void tapKey (uint8_t keyCode, uint8_t wait) {
+      Keyboard.press (keyCode);
+      Keyboard.sendReport ();
+      delay (wait);
+      Keyboard.release (keyCode);
+      Keyboard.sendReport ();
+      delay (wait);
+    }
+
     Key
     Hungarian_::eventHandlerHook (Key mappedKey, byte row, byte col, uint8_t keyState) {
       if (mappedKey.raw < HUNGARIAN_FIRST || mappedKey.raw > HUNGARIAN_LAST)
@@ -45,12 +54,7 @@ namespace KaleidoscopePlugins {
       bool needShift = Keyboard.isModifierActive (Key_LShift.keyCode) ||
         ::OneShot.isModifierActive (Key_LShift);
 
-      Keyboard.press (Key_RAlt.keyCode);
-      Keyboard.sendReport ();
-      delay (10);
-      Keyboard.release (Key_RAlt.keyCode);
-      Keyboard.sendReport ();
-      delay (10);
+      tapKey (Key_RAlt.keyCode, 10);
 
       HungarianSymbol symbol = (HungarianSymbol) (mappedKey.raw - HUNGARIAN_FIRST);
       Key accent;
@@ -100,23 +104,14 @@ namespace KaleidoscopePlugins {
       Keyboard.sendReport ();
       delay(10);
 
-      Keyboard.press (accent.keyCode);
-      Keyboard.sendReport ();
-      Keyboard.release (accent.keyCode);
-      Keyboard.sendReport ();
+      tapKey (accent.keyCode, 10);
 
       if (needShift)
         Keyboard.press (Key_LShift.keyCode);
       else
         Keyboard.release (Key_LShift.keyCode);
 
-      delay (10);
-      Keyboard.press (kc);
-      Keyboard.sendReport ();
-      delay(10);
-      Keyboard.release (kc);
-      Keyboard.sendReport ();
-      delay (10);
+      tapKey (kc, 10);
 
       return Key_NoKey;
     }
