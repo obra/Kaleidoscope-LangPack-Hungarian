@@ -57,19 +57,17 @@ namespace KaleidoscopePlugins {
       uint8_t kc = 0;
 
       accent.flags = KEY_FLAGS;
+      accent.keyCode = Key_Quote.raw;
 
       switch (symbol) {
       case AA:
         kc = Key_A.keyCode;
-        accent.raw = Key_Quote.raw;
         break;
       case OA:
         kc = Key_O.keyCode;
-        accent.raw = Key_Quote.raw;
         break;
       case OU:
         kc = Key_O.keyCode;
-        accent.raw = Key_Quote.raw;
         accent.flags |= SHIFT_HELD;
         break;
       case ODA:
@@ -78,15 +76,12 @@ namespace KaleidoscopePlugins {
         break;
       case EA:
         kc = Key_E.keyCode;
-        accent.raw = Key_Quote.raw;
         break;
       case UA:
         kc = Key_U.keyCode;
-        accent.raw = Key_Quote.raw;
         break;
       case UU:
         kc = Key_U.keyCode;
-        accent.raw = Key_Quote.raw;
         accent.flags |= SHIFT_HELD;
         break;
       case UDA:
@@ -95,7 +90,6 @@ namespace KaleidoscopePlugins {
         break;
       case IA:
         kc = Key_I.keyCode;
-        accent.raw = Key_Quote.raw;
         break;
       }
 
