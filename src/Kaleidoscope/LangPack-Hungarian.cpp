@@ -49,10 +49,10 @@ namespace KaleidoscopePlugins {
       if (!key_toggled_on (keyState))
         return Key_NoKey;
 
-      bool needShift = Keyboard.isModifierActive (Key_LShift.keyCode) ||
-        ::OneShot.isModifierActive (Key_LShift);
+      bool needShift = Keyboard.isModifierActive (Key_LeftShift.keyCode) ||
+        ::OneShot.isModifierActive (Key_LeftShift);
 
-      tapKey (Key_RAlt.keyCode);
+      tapKey (Key_RightAlt.keyCode);
 
       HungarianSymbol symbol = (HungarianSymbol) (mappedKey.raw - HUNGARIAN_FIRST);
       Key accent;
@@ -96,17 +96,17 @@ namespace KaleidoscopePlugins {
       }
 
       if (accent.flags & SHIFT_HELD)
-        Keyboard.press (Key_LShift.keyCode);
+        Keyboard.press (Key_LeftShift.keyCode);
       else
-        Keyboard.release (Key_LShift.keyCode);
+        Keyboard.release (Key_LeftShift.keyCode);
       Keyboard.sendReport ();
 
       tapKey (accent.keyCode);
 
       if (needShift)
-        Keyboard.press (Key_LShift.keyCode);
+        Keyboard.press (Key_LeftShift.keyCode);
       else
-        Keyboard.release (Key_LShift.keyCode);
+        Keyboard.release (Key_LeftShift.keyCode);
 
       tapKey (kc);
 
