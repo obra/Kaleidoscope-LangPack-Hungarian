@@ -40,7 +40,7 @@ class Hungarian_ : public KaleidoscopePlugin {
  public:
   Hungarian_(void);
 
-  virtual void begin(void) final;
+  void begin(void) final;
 
  private:
   static Key eventHandlerHook(Key mappedKey, byte row, byte col, uint8_t keyState);
