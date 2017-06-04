@@ -20,32 +20,32 @@
 #include <Kaleidoscope-Ranges.h>
 
 namespace KaleidoscopePlugins {
-  namespace LangPack {
+namespace LangPack {
 
-    enum {
-      HUNGARIAN_FIRST = KaleidoscopePlugins::Ranges::KALEIDOSCOPE_SAFE_START,
-      HUN_AA = HUNGARIAN_FIRST,
-      HUN_OA,
-      HUN_OU,
-      HUN_ODA,
-      HUN_EA,
-      HUN_UA,
-      HUN_UU,
-      HUN_UDA,
-      HUN_IA,
-      HUNGARIAN_LAST = HUN_IA,
-    };
+enum {
+  HUNGARIAN_FIRST = KaleidoscopePlugins::Ranges::KALEIDOSCOPE_SAFE_START,
+  HUN_AA = HUNGARIAN_FIRST,
+  HUN_OA,
+  HUN_OU,
+  HUN_ODA,
+  HUN_EA,
+  HUN_UA,
+  HUN_UU,
+  HUN_UDA,
+  HUN_IA,
+  HUNGARIAN_LAST = HUN_IA,
+};
 
-    class Hungarian_ : public KaleidoscopePlugin {
-    public:
-      Hungarian_ (void);
+class Hungarian_ : public KaleidoscopePlugin {
+ public:
+  Hungarian_(void);
 
-      virtual void begin (void) final;
+  virtual void begin(void) final;
 
-    private:
-      static Key eventHandlerHook (Key mappedKey, byte row, byte col, uint8_t keyState);
-    };
-  };
+ private:
+  static Key eventHandlerHook(Key mappedKey, byte row, byte col, uint8_t keyState);
+};
+};
 };
 
 extern KaleidoscopePlugins::LangPack::Hungarian_ Hungarian;

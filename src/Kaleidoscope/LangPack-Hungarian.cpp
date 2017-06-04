@@ -32,95 +32,95 @@ typedef enum {
 } HungarianSymbol;
 
 namespace KaleidoscopePlugins {
-  namespace LangPack {
+namespace LangPack {
 
-    static void tapKey (uint8_t keyCode) {
-      Keyboard.press (keyCode);
-      Keyboard.sendReport ();
-      Keyboard.release (keyCode);
-      Keyboard.sendReport ();
-    }
+static void tapKey(uint8_t keyCode) {
+  Keyboard.press(keyCode);
+  Keyboard.sendReport();
+  Keyboard.release(keyCode);
+  Keyboard.sendReport();
+}
 
-    Key
-    Hungarian_::eventHandlerHook (Key mappedKey, byte row, byte col, uint8_t keyState) {
-      if (mappedKey.raw < HUNGARIAN_FIRST || mappedKey.raw > HUNGARIAN_LAST)
-        return mappedKey;
+Key
+Hungarian_::eventHandlerHook(Key mappedKey, byte row, byte col, uint8_t keyState) {
+  if (mappedKey.raw < HUNGARIAN_FIRST || mappedKey.raw > HUNGARIAN_LAST)
+    return mappedKey;
 
-      if (!key_toggled_on (keyState))
-        return Key_NoKey;
+  if (!key_toggled_on(keyState))
+    return Key_NoKey;
 
-      bool needShift = Keyboard.isModifierActive (Key_LeftShift.keyCode) ||
-        ::OneShot.isModifierActive (Key_LeftShift);
+  bool needShift = Keyboard.isModifierActive(Key_LeftShift.keyCode) ||
+                   ::OneShot.isModifierActive(Key_LeftShift);
 
-      tapKey (Key_RightAlt.keyCode);
+  tapKey(Key_RightAlt.keyCode);
 
-      HungarianSymbol symbol = (HungarianSymbol) (mappedKey.raw - HUNGARIAN_FIRST);
-      Key accent;
-      uint8_t kc = 0;
+  HungarianSymbol symbol = (HungarianSymbol)(mappedKey.raw - HUNGARIAN_FIRST);
+  Key accent;
+  uint8_t kc = 0;
 
-      accent.flags = KEY_FLAGS;
-      accent.keyCode = Key_Quote.raw;
+  accent.flags = KEY_FLAGS;
+  accent.keyCode = Key_Quote.raw;
 
-      switch (symbol) {
-      case AA:
-        kc = Key_A.keyCode;
-        break;
-      case OA:
-        kc = Key_O.keyCode;
-        break;
-      case OU:
-        kc = Key_O.keyCode;
-        accent.flags |= SHIFT_HELD;
-        break;
-      case ODA:
-        kc = Key_O.keyCode;
-        accent.raw = Key_Equals.raw;
-        break;
-      case EA:
-        kc = Key_E.keyCode;
-        break;
-      case UA:
-        kc = Key_U.keyCode;
-        break;
-      case UU:
-        kc = Key_U.keyCode;
-        accent.flags |= SHIFT_HELD;
-        break;
-      case UDA:
-        kc = Key_U.keyCode;
-        accent.raw = Key_Equals.raw;
-        break;
-      case IA:
-        kc = Key_I.keyCode;
-        break;
-      }
-
-      if (accent.flags & SHIFT_HELD)
-        Keyboard.press (Key_LeftShift.keyCode);
-      else
-        Keyboard.release (Key_LeftShift.keyCode);
-      Keyboard.sendReport ();
-
-      tapKey (accent.keyCode);
-
-      if (needShift)
-        Keyboard.press (Key_LeftShift.keyCode);
-      else
-        Keyboard.release (Key_LeftShift.keyCode);
-
-      tapKey (kc);
-
-      return Key_NoKey;
-    }
-
-    Hungarian_::Hungarian_ (void) {
-    }
-
-    void
-    Hungarian_::begin (void) {
-      event_handler_hook_use (eventHandlerHook);
-    }
+  switch (symbol) {
+  case AA:
+    kc = Key_A.keyCode;
+    break;
+  case OA:
+    kc = Key_O.keyCode;
+    break;
+  case OU:
+    kc = Key_O.keyCode;
+    accent.flags |= SHIFT_HELD;
+    break;
+  case ODA:
+    kc = Key_O.keyCode;
+    accent.raw = Key_Equals.raw;
+    break;
+  case EA:
+    kc = Key_E.keyCode;
+    break;
+  case UA:
+    kc = Key_U.keyCode;
+    break;
+  case UU:
+    kc = Key_U.keyCode;
+    accent.flags |= SHIFT_HELD;
+    break;
+  case UDA:
+    kc = Key_U.keyCode;
+    accent.raw = Key_Equals.raw;
+    break;
+  case IA:
+    kc = Key_I.keyCode;
+    break;
   }
+
+  if (accent.flags & SHIFT_HELD)
+    Keyboard.press(Key_LeftShift.keyCode);
+  else
+    Keyboard.release(Key_LeftShift.keyCode);
+  Keyboard.sendReport();
+
+  tapKey(accent.keyCode);
+
+  if (needShift)
+    Keyboard.press(Key_LeftShift.keyCode);
+  else
+    Keyboard.release(Key_LeftShift.keyCode);
+
+  tapKey(kc);
+
+  return Key_NoKey;
+}
+
+Hungarian_::Hungarian_(void) {
+}
+
+void
+Hungarian_::begin(void) {
+  event_handler_hook_use(eventHandlerHook);
+}
+}
 }
 
 KaleidoscopePlugins::LangPack::Hungarian_ Hungarian;
